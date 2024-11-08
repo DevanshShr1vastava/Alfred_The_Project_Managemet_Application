@@ -1,7 +1,22 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from forms import RegistrationForm, LoginForm, UserPasswordResetForm, UserPasswordChangeForm, UserSetPasswordForm
+from django.contrib.auth.views import LoginView, PasswordResetView, PasswordChangeView, PasswordResetConfirmView
+from django.contrib.auth import logout
 
-# Create your views here.
+from django.contrib.auth.decorators import login_required
 
-def home(request):
-    
-    return render(request,'index.html')
+# Index
+def index(request):
+  return render(request, 'pages/index.html')
+
+def testFunc(request):
+  return render(request, "pages/fncTest.html")
+
+
+# Errors
+def error_404(request):
+  return render(request, 'pages/examples/404.html')
+
+def error_500(request):
+  return render(request, 'pages/examples/500.html')
+

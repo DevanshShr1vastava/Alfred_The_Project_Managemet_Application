@@ -16,9 +16,21 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from butler.views import home
+from butler import views
+from django.contrib.auth import views as auth_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',home,name='home'),
+]
+
+
+urlpatterns += [
+    # Index
+    path('', views.index, name="index"),
+    path('testFunc',views.testFunc, name='test'),
+   
+    # Errors
+    path('error/404/', views.error_404, name="error_404"),
+    path('error/500/', views.error_500, name="error_500"),
+
 ]
