@@ -1,0 +1,71 @@
+{% load static %}
+<head>
+    
+<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" />
+<link rel="stylesheet" href="{% static 'css/plugins.min.css' %}" />
+</head>
+<!-- Section: Design Block -->
+<section class="text-center text-lg-start">
+    <style>
+        .cascading-right {
+          margin-right: -100px;
+        }
+    
+        @media (max-width: 991.98px) {
+          .cascading-right {
+            margin-right: 0;
+          }
+        }
+      </style>
+  
+    <!-- Jumbotron -->
+    <div class="container mt-5 py-5 container-fluid">
+      <div class="row g-0 align-items-center">
+        <div class="col-lg-6 mb-5 mb-lg-0">
+          <div class="card cascading-right bg-body-tertiary" style="
+              backdrop-filter: blur(30px);
+              ">
+            <div class="card-body p-5 shadow-5 text-center">
+              <h2 class="fw-bold mb-5">Log in to your account</h2>
+              <form method="POST">
+                  {% csrf_token %}
+                
+  
+                <!-- Username input -->
+                <div data-mdb-input-init class="form-outline mb-4">
+                  <label class="form-label" for="{{ form.username.id_for_label }}">Username:</label>
+                    <input type="text" name="username" id="{{ form.username.id_for_label }}" class="form-control" data-bs-toggle="tooltip" title="{{ form.username.errors.as_text }}" placeholder="enter username here">
+                </div>
+  
+                <!-- Password input -->
+                <div data-mdb-input-init class="form-outline mb-4">
+                    <label class="form-label" for="{{ form.password.id_for_label }}">Password</label>
+                    <input type="password" name="password" id="{{ form.password.id_for_label }}" class="form-control" data-bs-toggle="tooltip" title="{{ form.password.errors.as_text }}">
+                </div>
+  
+                
+  
+                <!-- Submit button -->
+                <button type="submit" class="btn btn-primary btn-block mb-4">
+                  login
+                </button>
+  
+                <!-- Register buttons -->
+                <div style="text-align:center">
+                  <a href="{% url 'signup' %}">don't have an account? sign up</a>
+                  
+                </div>
+              </form>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-6 mb-5 mb-lg-0">
+      <img src="{% static 'img/loginBG.jpg' %}" style="height:473px;width:700px" class="rounded-4 shadow-4"
+        alt="" />
+    </div>
+
+      </div>
+    </div>
+    <!-- Jumbotron -->
+  </section>
+  <!-- Section: Design Block -->

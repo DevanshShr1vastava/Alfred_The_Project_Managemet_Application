@@ -17,7 +17,6 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from butler import views
-from django.contrib.auth import views as auth_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -27,10 +26,21 @@ urlpatterns = [
 urlpatterns += [
     # Index
     path('', views.index, name="index"),
+    
     path('testFunc',views.testFunc, name='test'),
-   
-    # Errors
-    path('error/404/', views.error_404, name="error_404"),
-    path('error/500/', views.error_500, name="error_500"),
 
+    path('taskmanager',views.task_manager,name='task'),
+    path('employeemanager',views.employee_manager,name='empMan'),
+    path('projectmanager',views.project_manager, name='projMan'),
+
+    path('del_T/<int:f_id>/',views.deleteTask,name="deleteTask_url"),
+    path('edit_T/<int:f_id>/',views.updateTask,name="editTask_url"),
+    path('del_P/<int:f_id>/',views.deleteProject,name="deleteProject_url"),
+    path('edit_P/<int:f_id>/',views.updateProject,name="editProject_url"),
+    path('del_E/<int:f_id>/',views.deleteEmployee,name="deleteEmployee_url"),
+    path('edit_E/<int:f_id>/',views.updateEmployee,name="editEmployee_url"),
+
+    path('login/', views.user_login, name='login'),
+    path('signup/', views.signup, name='signup'),
+    path('logout/', views.user_logout, name='logout'),
 ]

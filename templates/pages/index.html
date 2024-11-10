@@ -1,12 +1,238 @@
-{% extends 'layouts/base.html' %}
-{% load static %}
-<head>
-  {% include 'includes/head.html' %}
-</head>
+{% extends 'layout/base.html' %}
+{% load static %} 
 
 {% block content %}
 
-<div class = ''>
+<div class="row">
+  <div class="col-sm-6 col-md-3">
+    <div class="card card-stats card-round">
+      <div class="card-body">
+        <div class="row align-items-center">
+          <div class="col-icon">
+            <div
+              class="icon-big text-center icon-primary bubble-shadow-small"
+            >
+              <i class="fas fa-users"></i>
+            </div>
+          </div>
+          <div class="col col-stats ms-3 ms-sm-0">
+            <div class="numbers">
+              <p class="card-category">Active Projects</p>
+              <h4 class="card-title">{{ DisplayData.projCount }}</h4>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6 col-md-3">
+    <div class="card card-stats card-round">
+      <div class="card-body">
+        <div class="row align-items-center">
+          <div class="col-icon">
+            <div
+              class="icon-big text-center icon-info bubble-shadow-small"
+            >
+              <i class="fas fa-user-check"></i>
+            </div>
+          </div>
+          <div class="col col-stats ms-3 ms-sm-0">
+            <div class="numbers">
+              <p class="card-category">Completed Tasks</p>
+              <h4 class="card-title">{{ DisplayData.completedTasks }}</h4>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6 col-md-3">
+    <div class="card card-stats card-round">
+      <div class="card-body">
+        <div class="row align-items-center">
+          <div class="col-icon">
+            <div
+              class="icon-big text-center icon-success bubble-shadow-small"
+            >
+              <i class="fas fa-luggage-cart"></i>
+            </div>
+          </div>
+          <div class="col col-stats ms-3 ms-sm-0">
+            <div class="numbers">
+              <p class="card-category">Backlog Tasks</p>
+              <h4 class="card-title">{{ DisplayData.backlogTasks }}</h4>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6 col-md-3">
+    <div class="card card-stats card-round">
+      <div class="card-body">
+        <div class="row align-items-center">
+          <div class="col-icon">
+            <div
+              class="icon-big text-center icon-secondary bubble-shadow-small"
+            >
+              <i class="far fa-check-circle"></i>
+            </div>
+          </div>
+          <div class="col col-stats ms-3 ms-sm-0">
+            <div class="numbers">
+              <p class="card-category">Star Employee</p>
+              <h4 class="card-title">{{ DisplayData.starEmployee }}</h4>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-8 col-xxl-9 mb-4">
+    <div class="card border-0 shadow">
+      <div class="card-header border-bottom d-flex align-items-center justify-content-between">
+        <h2 class="fs-5 fw-bold mb-0">Progress track</h2>
+        
+      </div>
+      <div class="card-body">
+        <!-- Project 1 -->
+        {% for p in DisplayData.projData %}
+        <div class="row mb-4">
+          <div class="col">
+            <div class="progress-wrapper">
+              <div class="progress-info">
+                <div class="h6 mb-0">{{ p.projectName }}</div>
+                <div class="small fw-bold text-gray-500"><span>{{ p.projectProgress }}%</span></div>
+              </div>
+              <div class="progress mb-0">
+                <div class="progress-bar bg-success" role="progressbar" style="width: {{ p.projectProgress }}%" aria-valuenow="{{ p.projectProgress }}" aria-valuemin="0"
+                  aria-valuemax="100" style="width: 75%;"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4 col-xxl-3">
+    <div class="card card-round">
+      <div class="card-body">
+        <div class="card-head-row card-tools-still-right">
+          <div class="card-title">Project Leaders</div>
+        </div>
+        <div class="card-list py-4">
+          {% for e in DisplayData.leadEmployee %}
+          <div class="item-list">
+            <div class="avatar">
+              <span
+                class="avatar-title rounded-circle border border-white"
+                >-_-</span
+              >
+            </div>
+            <div class="info-user ms-3">
+              <div class="username">{{ e.empName }}</div>
+              <div class="status">{{ e.empDesignation }}</div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <div class="row row-card-no-pd">
+      <div class="card-title">To Notify These Employees</div>
+      <div class="card-category mb-2">These employees have the most number of backlogs</div>
+      {% for i in DisplayData.backLogEmployees %}
+      {% if forloop.counter == 1 %}
+      <div class="col-sm-6 col-md-3">
+        <div class="card card-stats card-danger card-round">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-5">
+                <div class="icon-big text-center">
+                  <i class="icon-fire"></i>
+                </div>
+              </div>
+              <div class="col-7 col-stats">
+                <div class="numbers">
+                  <p class="card-category">{{ i.empName }}</p>
+                  <h4 class="card-title">{{ i.incomplete_tasks }}</h4>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% elif forloop.counter == 2 %}
+      <div class="col-sm-6 col-md-3">
+        <div class="card card-stats card-warning card-round">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-5">
+                <div class="icon-big text-center">
+                  <i class="fas fa-stopwatch fa-xl"></i>
+                </div>
+              </div>
+              <div class="col-7 col-stats">
+                <div class="numbers">
+                  <p class="card-category">{{ i.empName }}</p>
+                  <h4 class="card-title">{{ i.incomplete_tasks }}</h4>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% elif forloop.counter == 3 %}
+      <div class="col-sm-6 col-md-3">
+        <div class="card card-stats card-secondary card-round">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-5">
+                <div class="icon-big text-center">
+                  <i class="icon-ghost"></i>
+                </div>
+              </div>
+              <div class="col-7 col-stats">
+                <div class="numbers">
+                  <p class="card-category">{{ i.empName }}</p>
+                  <h4 class="card-title">{{ i.incomplete_tasks }}</h4>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% elif forloop.counter == 4 %}
+      <div class="col-sm-6 col-md-3">
+        <div class="card card-stats card-info card-round">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-5">
+                <div class="icon-big text-center">
+                  <i class="fas fa-skull"></i>
+                </div>
+              </div>
+              <div class="col-7 col-stats">
+                <div class="numbers">
+                  <p class="card-category">{{ i.empName }}</p>
+                  <h4 class="card-title">{{ i.incomplete_tasks }}</h4>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endif %}
+      {% endfor %}
+    </div>
+  </div>
 </div>
 
-{% endblock content %}
+{% endblock %}

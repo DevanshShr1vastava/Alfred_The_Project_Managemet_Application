@@ -1,0 +1,253 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Document</title>
+
+    <!-- Fonts and icons -->
+    <script src="{% static 'js/plugin/webfont/webfont.min.js' %}"></script>
+    <script>
+    WebFont.load({
+        google: { families: ["Public Sans:300,400,500,600,700"] },
+        custom: {
+        families: [
+            "Font Awesome 5 Solid",
+            "Font Awesome 5 Regular",
+            "Font Awesome 5 Brands",
+            "simple-line-icons",
+        ],
+        urls: ["{% static 'css/fonts.min.css' %}"],
+        },
+        active: function () {
+        sessionStorage.fonts = true;
+        },
+    });
+    </script>
+
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/plugins.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/kaiadmin.min.css' %}" />
+
+
+
+
+
+
+</head>
+<body>
+    <div class="wrapper">            
+              <div class="sidebar" data-background-color="dark">
+                <div class="sidebar-logo">
+                  <!-- Logo Header -->
+                  <div class="logo-header" data-background-color="dark">
+                    <a href="{% url 'index' %}" class="logo">
+                      <h1 class="display-5 title mt-4">Alfred</h1>
+                    </a>
+                    <div class="nav-toggle">
+                      <button class="btn btn-toggle toggle-sidebar">
+                        <i class="gg-menu-right"></i>
+                      </button>
+                      <button class="btn btn-toggle sidenav-toggler">
+                        <i class="gg-menu-left"></i>
+                      </button>
+                    </div>
+                    <button class="topbar-toggler more">
+                      <i class="gg-more-vertical-alt"></i>
+                    </button>
+                  </div>
+                  <!-- End Logo Header -->
+                </div>
+                <div class="sidebar-wrapper scrollbar scrollbar-inner">
+                    <div class="sidebar-content">
+                        <ul class="nav nav-secondary">
+                          <li class="nav-item active">
+                            <a
+                            
+                              href="{% url 'index' %}"
+                              class="collapsed"
+                              aria-expanded="false"
+                            >
+                              <i class="fas fa-home"></i>
+                              <p>Home</p>
+                             
+                            </a>
+                            
+                          </li>
+                          <li class="nav-section">
+                            <span class="sidebar-mini-icon">
+                              <i class="fa fa-ellipsis-h"></i>
+                            </span>
+                            <h4 class="text-section">Features</h4>
+                          </li>
+                          <li class="nav-item">
+                            <a href="{% url 'empMan' %}">
+                              <i class="fas fa-layer-group"></i>
+                              <p>Manage Employees</p>
+                              
+                            </a>
+                            
+                          </li>
+                          <li class="nav-item">
+                            <a href="{% url 'projMan' %}">
+                              <i class="fas fa-th-list"></i>
+                              <p>Manage Projects</p>
+                              
+                            </a>
+                          </li>
+                          <li class="nav-item">
+                            <a href="{% url 'task' %}">
+                              <i class="fas fa-pen-square"></i>
+                              <p>Manage Tasks</p>
+                              
+                            </a>
+                            
+                          </li>
+                          
+                          
+                          
+                          
+                        </ul>
+                      </div>
+                </div>
+              </div>
+              <!-- End Sidebar -->
+        
+              <div class="main-panel">
+                <div class="main-header">
+                  <div class="main-header-logo">
+                    <!-- Logo Header -->
+                    <div class="logo-header" data-background-color="dark">
+                      <a href="{% url 'index' %}" class="logo">
+                        <h1 class="display-6">Alfred</h1>
+                      </a>
+                      <div class="nav-toggle">
+                        <button class="btn btn-toggle toggle-sidebar">
+                          <i class="gg-menu-right"></i>
+                        </button>
+                        <button class="btn btn-toggle sidenav-toggler">
+                          <i class="gg-menu-left"></i>
+                        </button>
+                      </div>
+                      <button class="topbar-toggler more">
+                        <i class="gg-more-vertical-alt"></i>
+                      </button>
+                    </div>
+                    <!-- End Logo Header -->
+                  </div>
+                  <!-- Navbar Header -->
+                  <nav
+                    class="navbar navbar-header navbar-header-transparent navbar-expand-lg border-bottom"
+                  >
+                    <div class="container-fluid">
+                      <nav
+                        class="navbar navbar-header-left navbar-expand-lg navbar-form nav-search p-0 d-none d-lg-flex"
+                      >
+                        
+                            <h2 class="display-5">The Project Butler</h2>
+                          
+                      </nav>
+        
+                      <ul class="navbar-nav topbar-nav ms-md-auto align-items-center">                     
+        
+                        <li class="nav-item topbar-user dropdown hidden-caret">
+                          <a
+                            class="dropdown-toggle profile-pic"
+                            data-bs-toggle="dropdown"
+                            href="#"
+                            aria-expanded="false"
+                          >
+                            <div class="avatar-sm">
+                              <img
+                                src="{% static 'img/jm_denis.jpg' %}"
+                                alt="..."
+                                class="avatar-img rounded-circle"
+                              />
+                            </div>
+                            <span class="profile-username">
+                              <span class="op-7">Hi,</span>
+                              <span class="fw-bold">{{ user.username }}</span>
+                            </span>
+                          </a>
+                          <ul class="dropdown-menu dropdown-user animated fadeIn">
+                            <div class="dropdown-user-scroll scrollbar-outer">
+                              <li>
+                                <div class="user-box">
+                                  <div class="avatar-lg">
+                                    <img
+                                      src="{% static 'img/jm_denis.jpg' %}"
+                                      alt="image profile"
+                                      class="avatar-img rounded"
+                                    />
+                                  </div>
+                                  <div class="u-text">
+                                    <h4>{{ user.username }}</h4>
+                                    <p class="text-muted">{{ user.email }}</p>
+                                   
+                                  </div>
+                                </div>
+                              </li>
+                              <li>                               
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
+                              </li>
+                            </div>
+                          </ul>
+                        </li>
+                      </ul>
+                    </div>
+                  </nav>
+                  <!-- End Navbar -->
+                </div>
+              <div class="container">
+                <div class="page-inner">
+                    {% block content %}
+                    
+                    {% endblock content %}
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    
+
+    <!--   Core JS Files   -->
+    <script src="{% static 'js/core/jquery-3.7.1.min.js' %}"></script>
+    <script src="{% static 'js/core/popper.min.js' %}"></script>
+    <script src="{% static 'js/core/bootstrap.min.js' %}"></script>
+
+    <!-- jQuery Scrollbar -->
+    <script src="{% static 'js/plugin/jquery-scrollbar/jquery.scrollbar.min.js' %}"></script>
+
+    <!-- Chart JS -->
+    <script src="{% static 'js/plugin/chart.js/chart.min.js' %}"></script>
+
+    <!-- jQuery Sparkline -->
+    <script src="{% static 'js/plugin/jquery.sparkline/jquery.sparkline.min.js' %}"></script>
+
+    <!-- Chart Circle -->
+    <script src="{% static 'js/plugin/chart-circle/circles.min.js' %}"></script>
+
+    <!-- Datatables -->
+    <script src="{% static 'js/plugin/datatables/datatables.min.js' %}"></script>
+
+    <!-- Bootstrap Notify -->
+    <script src="{% static 'js/plugin/bootstrap-notify/bootstrap-notify.min.js' %}"></script>
+
+    <!-- jQuery Vector Maps -->
+    <script src="{% static 'js/plugin/jsvectormap/jsvectormap.min.js' %}"></script>
+    <script src="{% static 'js/plugin/jsvectormap/world.js' %}"></script>
+
+    <!-- Sweet Alert -->
+    <script src="{% static 'js/plugin/sweetalert/sweetalert.min.js' %}"></script>
+
+    <!-- Kaiadmin JS -->
+    <script src="{% static 'js/kaiadmin.min.js' %}"></script>
+
+ 
+</body>
+</html>
