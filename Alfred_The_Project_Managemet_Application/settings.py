@@ -87,9 +87,14 @@ WSGI_APPLICATION = 'Alfred_The_Project_Managemet_Application.wsgi.application'
 # }
 
 DATABASES = {
-    "default" : 
-       dj_database_url.config(os.getenv('DATABASE_URL'),    conn_max_age=600)
-    
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'alfred-DB',                      
+        'USER': 'alfred_db_user',
+        'PASSWORD': os.getenv('DATABASE_PASSWORD'),
+        'HOST': 'dpg-csoom8aj1k6c73al8sqg-a',
+        'PORT': 5432,
+    }
 }
 
 # Password validation
