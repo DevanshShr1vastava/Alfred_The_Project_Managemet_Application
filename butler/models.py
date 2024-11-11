@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 
 # Create your models here.
 class employee(models.Model):
-    empID = models.IntegerField(primary_key=True)
+    empID = models.AutoField(primary_key=True)
     empName = models.CharField(max_length=255)
     empDesignation = models.CharField(max_length=255)
     def __str__(self):
@@ -11,7 +11,7 @@ class employee(models.Model):
 
 
 class project(models.Model):
-    projectID = models.IntegerField(primary_key=True)
+    projectID = models.AutoField(primary_key=True)
     projectName = models.CharField(max_length=255)
     projectProgress = models.IntegerField()
     projectDomain = models.CharField(max_length=255)
@@ -20,7 +20,7 @@ class project(models.Model):
         return self.projectName
 
 class assignments(models.Model):
-    aID = models.IntegerField(primary_key=True)
+    aID = models.AutoField(primary_key=True)
     projID = models.ForeignKey(project,on_delete=models.CASCADE)
     eID = models.ForeignKey(employee,on_delete=models.CASCADE)
 
