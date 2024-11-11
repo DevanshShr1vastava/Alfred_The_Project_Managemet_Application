@@ -29,7 +29,7 @@ SECRET_KEY = 'django-insecure-8kd6!4g3t(4-c%m$6oa8!wpzurb+%2fy_&ai2n&x!)55a#ey+6
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['alfred-the-project-managemet-application.onrender.com']
 
 
 # Application definition
