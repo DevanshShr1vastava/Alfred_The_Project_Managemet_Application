@@ -29,7 +29,7 @@ class Task(models.Model):
     project = models.ForeignKey(project, on_delete=models.CASCADE)
     taskName = models.CharField(max_length=255)
     isCompleted = models.BooleanField(default=False)
-    assignedEmployee = models.ForeignKey(employee, on_delete=models.SET_NULL, null=True)
+    assignedEmployee = models.ForeignKey(employee, on_delete=models.CASCADE, null=True)
 
     def __str__(self):
         return f"{self.taskName} - {'Completed' if self.isCompleted else 'Pending'} (Assigned to: {self.assignedEmployee.empName if self.assignedEmployee else 'Unassigned'})"
