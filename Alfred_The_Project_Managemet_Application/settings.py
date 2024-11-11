@@ -89,7 +89,7 @@ WSGI_APPLICATION = 'Alfred_The_Project_Managemet_Application.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'alfred-DB',                      
+        'NAME': 'alfred_db',                      
         'USER': 'alfred_db_user',
         'PASSWORD': os.getenv('DATABASE_PASSWORD'),
         'HOST': 'dpg-csoom8aj1k6c73al8sqg-a',
