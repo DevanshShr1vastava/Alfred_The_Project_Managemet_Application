@@ -86,7 +86,8 @@ WSGI_APPLICATION = 'Alfred_The_Project_Managemet_Application.wsgi.application'
 # }
 
 DATABASES = {
-    "default" : dj_database_url.parse(os.getenv('DATABASE_URL'))
+    "default" : dj_database_url.config(os.getenv('DATABASE_URL'),
+    conn_max_age=600)
 }
 
 # Password validation
